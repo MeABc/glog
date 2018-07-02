@@ -41,5 +41,5 @@ func IsTerminal(fd uintptr) bool {
 
 func RedirectStderrTo(file *os.File) error {
 	os.Stderr = file
-	return syscall.Dup3(int(file.Fd()), 2, 0)
+	return syscall.Dup2(int(file.Fd()), 2)
 }
